@@ -5,8 +5,6 @@
  */
 package dao;
 
-import bean.Libro;
-import bean.Usuario;
 
 /**
  *
@@ -18,11 +16,10 @@ public class prueba {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-       BibliotecaDAO dao = new BibliotecaDAO();
-       Libro lib = dao.obtenerLibro("12345");
-       
-        System.out.println(lib.getTitulo());
+        CalculadorDAO dao = new CalculadorDAO();
+        
+        System.out.println(dao.suma(5, 5));
+        
     }
     
 }

@@ -5,12 +5,9 @@
  */
 package wservice;
 
-import bean.Libro;
-import bean.Usuario;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import dao.BibliotecaDAO;
-import dao.LoginDAO;
+import dao.CalculadorDAO;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ws.rs.core.Context;
@@ -26,11 +23,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import org.jboss.weld.context.bound.Bound;
 
-/**
- * REST Web Service
- *
- * @author Jose Luis
- */
+
 @Path("generic")
 public class GenericResource {
 
@@ -38,29 +31,35 @@ public class GenericResource {
     private UriInfo context;
     
 
-    /**
-     * Creates a new instance of GenericResource
-     */
     public GenericResource() {
     }
 
-    
-    
     @GET
-    @Produces("application/json")
-    @Path("login")    
-    public Usuario login(@QueryParam("usuario") String usuario,@QueryParam("password") String password) {
-        LoginDAO dao=new LoginDAO();
-        return dao.login(usuario, password);
+    @Path("suma")    
+    public double suma(@QueryParam("num1") double num1,@QueryParam("num2") double num2) {
+        CalculadorDAO dao=new CalculadorDAO();
+        return dao.suma(num1, num2);
     }
     
     @GET
-    @Produces("application/json")
-    @Consumes("application/json")
-    @Path("ingresarLibro")    
-    public String ingresarLibro(@QueryParam("libro") Libro libro) {
-        BibliotecaDAO dao=new BibliotecaDAO();
-        return dao.ingresarLibro(libro);
+    @Path("diferencia")    
+    public double diferencia(@QueryParam("num1") double num1,@QueryParam("num2") double num2) {
+        CalculadorDAO dao=new CalculadorDAO();
+        return dao.diferencia(num1, num2);
+    }
+    
+    @GET
+    @Path("multiplicacion")    
+    public double multiplicacion(@QueryParam("num1") double num1,@QueryParam("num2") double num2) {
+        CalculadorDAO dao=new CalculadorDAO();
+        return dao.multiplicacion(num1, num2);
+    }
+    
+    @GET
+    @Path("division")    
+    public double division(@QueryParam("num1") double num1,@QueryParam("num2") double num2) {
+        CalculadorDAO dao=new CalculadorDAO();
+        return dao.division(num1, num2);
     }
     
 
